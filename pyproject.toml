@@ -36,7 +36,7 @@ test = "pytest -n auto --ff"
 retest = "pytest -n auto --lf"
 testcov = "pytest -n auto --cov-report= --cov"
 report = "coverage report"
-commit = "git add . && git commit"
+commit = "git add . && git commit -m"
 
 # =====================================================
 # Ruff Linting Configuration
