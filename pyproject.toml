@@ -18,7 +18,26 @@ dev = [
     "ruff>=0.14.5",
     "ty>=0.0.1a26",
     "uv>=0.9.10",
+    "taskipy>=1.14.1",
+    "pytest-xdist>=3.8.0",
+    "coverage>=7.12.0",
+    "pytest-cov>=7.0.0",
 ]
+
+# =====================================================
+# Scripts
+# =====================================================
+[tool.taskipy.tasks]
+start = "python -m bot"
+lint = "pre-commit run --all-files"
+precommit = "pre-commit install"
+build = "docker build -t capy-discord ."
+push = ""
+test = "pytest -n auto --ff"
+retest = "pytest -n auto --lf"
+test-cov = "pytest -n auto --cov-report= --cov"
+html = "coverage html"
+report = "coverage report"
 
 # =====================================================
 # Ruff Linting Configuration
@@ -73,12 +92,17 @@ select = [
     # --- Testing ---
     "PT",     # flake8-pytest-style: Enforces best practices for pytest
 ]
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["ANN", "D", "S101"]
+"__init__.py" = ["F401"]
+
+[tool.ruff.lint.isort]
+order-by-type = false
+case-sensitive = true
+combine-as-imports = true
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
 [tool.ruff.lint.mccabe]
 max-complexity = 10
-
-[tool.ruff.lint.per-file-ignores]
-"tests/*" = ["D", "ARG"]

@@ -10,5 +10,10 @@ def main() -> None:
         pass
 
 
+def ping() -> str:
+    """Return pong to test."""
+    return "Pong!"
+
+
 if __name__ == "__main__":
     main()
