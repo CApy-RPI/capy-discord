@@ -38,11 +38,5 @@ jobs:
       - name: Run linter
         run: uv run task lint
 
-      - name: Run tests with coverage
-        run: uv run task testcov
-
-      - name: Upload coverage artifact
-        uses: actions/upload-artifact@v5
-        with:
-          name: coverage-report
-          path: .coverage
+      - name: Run tests
+        run: uv run task test

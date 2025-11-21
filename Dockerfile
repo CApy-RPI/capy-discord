@@ -28,7 +28,7 @@ COPY --from=builder /build /build
 ENV PATH="/build/.venv/bin:$PATH"
 
 WORKDIR /app
-COPY bot/ ./bot/
+COPY . .
 
 ENTRYPOINT ["python"]
-CMD ["-m", "bot.main"]
+CMD ["-m", "capy_discord"]

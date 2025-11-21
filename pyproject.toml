@@ -8,7 +8,7 @@ description = "Add your description here"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = "==3.13.*"
-dependencies = ["pydantic-settings>=2.12.0"]
+dependencies = ["discord-py>=2.6.4", "pydantic-settings>=2.12.0"]
 
 [dependency-groups]
 dev = [
@@ -27,7 +27,7 @@ dev = [
 # Scripts
 # =====================================================
 [tool.taskipy.tasks]
-start = { cmd = "python -m bot.main", help = "Runs the python application locally." }
+start = { cmd = "python -m capy_discord", help = "Runs the python application locally." }
 lint = { cmd = "pre-commit install && pre-commit run --all-files", help = "Installs git hooks if needed, then lints and formats the codebase." }
 build = { cmd = "docker build -t capy-discord .", help = "Builds the application's Docker image." }
 run = { cmd = "docker run -it --rm capy-discord", help = "Runs the application inside a new Docker container." }
@@ -90,6 +90,11 @@ select = [
     # --- Testing ---
     "PT", # flake8-pytest-style: Enforces best practices for pytest
 ]
+ignore = [
+    "D100", # Missing docstring in public module
+    "D104", # Missing docstring in public package
+]
+
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["ANN", "D", "S101"]
 "__init__.py" = ["F401"]
