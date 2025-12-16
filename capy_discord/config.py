@@ -15,6 +15,7 @@ class EnvConfig(BaseSettings):
 class Settings(EnvConfig):
     """Manages application settings using Pydantic."""
 
+    log_level: str = "INFO"
     prefix: str = "/"
     token: str = ""
 
