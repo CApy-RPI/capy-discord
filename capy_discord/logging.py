@@ -29,8 +29,3 @@ def setup_logging() -> None:
     )
     file_handler.setFormatter(logging.Formatter(log_format))
     logger.addHandler(file_handler)
-
-    # Console handler
-    console_handler = logging.StreamHandler()
-    console_handler.setFormatter(logging.Formatter(log_format))
-    logger.addHandler(console_handler)
