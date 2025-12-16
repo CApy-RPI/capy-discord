@@ -22,7 +22,9 @@ repos:
       - id: ruff-format
   - repo: local
     hooks:
-      - id: ty-check
-        name: ty check
-        entry: uv run ty check
-        language: python
+      - id: ty
+        name: ty
+        entry: ty check
+        language: system
+        types: [python]
+        pass_filenames: false
